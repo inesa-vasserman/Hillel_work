@@ -1,46 +1,41 @@
-package com.hillel.hw3;
-
-//Задана строка. Вывести все перестановки этой строки.
-//        Например для строки "abc":
-//        abc, acb, bac, bca, cab, cba
+import java.util.HashSet;
 
 public class Exercise3 {
     public static void main(String[] args) {
     }
+//    3*) Решить задачу
+//    https://leetcode.com/problems/unique-email-addresses/
 
-    public static void getVariations(String elements) {
-        String[] arr = elements.split("");
-        prepareElements(arr, 0);
-    }
-
-    private static void prepareElements(String[] arrElements, int i) {
-        if (i == arrElements.length - 1) {
-            getResults(arrElements);
-        } else {
-            for (int j = i; j < arrElements.length; j++) {
-                changeElements(arrElements, i, j);
-                prepareElements(arrElements, i + 1);
-                changeElements(arrElements, i, j);
+    public static int numUniqueEmails(String[] emails) {
+        String[] arr = new String[emails.length];
+        for (int i = 0; i < emails.length; i++) {
+            String checker = emails[i];
+            StringBuilder sb = new StringBuilder(checker);
+            int index2 = checker.indexOf('@');
+            if (checker.contains(".")) {
+                while (checker.contains(".")) {
+                    index2 = checker.indexOf('@');
+                    int index3 = checker.indexOf('.');
+                    if (index3 < index2) {
+                        sb.replace(index3, index3 + 1, "");
+                        checker = sb.toString();
+                    } else {
+                        break;
+                    }
+                }
             }
+            if (checker.contains("+")) {
+                int index1 = checker.indexOf('+');
+                if (index1 < index2) {
+                    sb.replace(index1, index2, "");
+                }
+            }
+            arr[i] = sb.toString();
         }
-    }
-
-
-    static void changeElements(String[] arr, int index1, int index2) {
-        String tmp = arr[index1];
-        arr[index1] = arr[index2];
-        arr[index2] = tmp;
-    }
-
-    private static void getResults(String[] pa) {
-        StringBuffer s = new StringBuffer();
-
-        for (String a : pa) {
-            s.append(a);
+        HashSet<String> states = new HashSet<String>();
+        for (int i = 0; i < arr.length; i++) {
+            states.add(arr[i]);
         }
-
-        s.substring(0, s.length() - 2);
-
-        System.out.print(s + " ");
+        return states.size();
     }
 }
