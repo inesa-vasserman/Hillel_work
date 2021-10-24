@@ -1,10 +1,5 @@
 package Homework6;
 
-import Homework7.OOP.Cat;
-import Homework7.OOP.Human;
-import Homework7.OOP.Participant;
-import Homework7.OOP.Robot;
-
 public class General {
     public static void main(String[] args) {
 
