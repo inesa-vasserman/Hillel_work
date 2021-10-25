@@ -14,6 +14,6 @@ public class RunningRoad implements Obstacle {
 
     @Override
     public boolean overcome(Participant p) {
-        return p.run(lengthRoad);
+        return p.run(lengthRoad, this.getClass().getSimpleName());
     }
 }

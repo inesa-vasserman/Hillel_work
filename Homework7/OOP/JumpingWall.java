@@ -14,7 +14,7 @@ public class JumpingWall implements Obstacle {
 
     @Override
     public boolean overcome(Participant p) {
-        return p.jump(heightWall);
+        return p.jump(heightWall, this.getClass().getSimpleName());
     }
 
 }
