@@ -24,8 +24,7 @@ public class Iterator {
     }
 
     public boolean hasNext() {
-        while (sumOfNumber >= 1) {
-            sumOfNumber--;
+        while (indexArr < newArr.length - 1) {
             return true;
         }
         return false;
