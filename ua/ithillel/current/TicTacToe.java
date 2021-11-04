@@ -23,6 +23,7 @@ public class TicTacToe {
             ResultGame resultGame = new ResultGame();
 
             drawField();
+            endingOfGame = 0;
 
             while (!resultGame.checkResultPlayer(field)) {
 
@@ -82,9 +83,9 @@ public class TicTacToe {
 
     private void drawField() {
 
-        for (int i = 0; i < field.length; i++) {
+        for (char[] chars : field) {
             for (int j = 0; j < field.length; j++) {
-                System.out.print(field[i][j]);
+                System.out.print(chars[j]);
                 System.out.print(" ");
             }
             System.out.println();

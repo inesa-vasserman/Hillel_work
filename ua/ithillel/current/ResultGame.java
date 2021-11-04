@@ -11,13 +11,12 @@ public class ResultGame extends TicTacToe {
         char[] elements = {'O', 'X'};
         String[] players = {"Computer", "Player"};
         for (int k = 0; k < elements.length; k++) {
-            counter = 0;
 
-            for (int i = 0; i < field.length; i++) {
+            for (char[] chars : field) {
                 counter = 0;
 
-                for (int j = 0; j < field[i].length; j++) {
-                    if (checkSymbol(field[i][j], elements[k])) {
+                for (int j = 0; j < chars.length; j++) {
+                    if (checkSymbol(chars[j], elements[k])) {
                         printResult(players[k]);
                         return true;
                     }
@@ -34,6 +33,8 @@ public class ResultGame extends TicTacToe {
                     }
                 }
             }
+
+            counter = 0;
             for (int i = 0; i < field.length; i++) {
 
                 if (checkSymbol(field[i][i], elements[k])) {
@@ -42,9 +43,11 @@ public class ResultGame extends TicTacToe {
 
                 }
             }
+
+            counter = 0;
             int j = field.length - 1;
-            for (int i = 0; i < field.length; i++) {
-                if (checkSymbol(field[i][j], elements[k])) {
+            for (char[] chars : field) {
+                if (checkSymbol(chars[j], elements[k])) {
                     printResult(players[k]);
                     return true;
                 }
