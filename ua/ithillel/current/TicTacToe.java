@@ -54,7 +54,7 @@ public class TicTacToe {
 
             field[coordinate.getVertical()][coordinate.getHorizontal()] = moveResult.getSymbol();
         }
-        endingOfGame ++;
+        endingOfGame++;
     }
 
     private int writeSize() {
