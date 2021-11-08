@@ -1,4 +1,4 @@
-package Inesa_Vasserman.hw2;
+package Homework2;
 
 public class Main {
 
@@ -34,9 +34,9 @@ public class Main {
         jewelsArray = jewels.trim().toCharArray();
         checkStones = stones.trim().toCharArray();
         counter = 0;
-        for (int i = 0; i < jewelsArray.length; i++) {
-            for (int j = 0; j < checkStones.length; j++) {
-                if (jewelsArray[i] == checkStones[j]) {
+        for (char c : jewelsArray) {
+            for (char checkStone : checkStones) {
+                if (c == checkStone) {
                     counter++;
                 }
             }
@@ -60,12 +60,12 @@ public class Main {
 
     public static boolean judgeCircle(String moves) {
         robotsWay = moves.toCharArray();
-        for (int i = 0; i < robotsWay.length; i++) {
-            if (robotsWay[i] == 'L') {
+        for (char c : robotsWay) {
+            if (c == 'L') {
                 side -= 1;
-            } else if (robotsWay[i] == 'R') {
+            } else if (c == 'R') {
                 side += 1;
-            } else if (robotsWay[i] == 'D') {
+            } else if (c == 'D') {
                 height -= 1;
             } else {
                 height += 1;

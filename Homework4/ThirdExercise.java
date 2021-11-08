@@ -1,3 +1,5 @@
+package Homework4;
+
 import java.util.HashSet;
 
 public class ThirdExercise {
