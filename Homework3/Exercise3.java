@@ -1,4 +1,4 @@
-package FirstHomeworks.Homework3;
+package Homework3;
 
 //Задана строка. Вывести все перестановки этой строки.
 //        Например для строки "abc":
