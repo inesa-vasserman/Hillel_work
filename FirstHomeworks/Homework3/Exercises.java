@@ -1,4 +1,4 @@
-package com.hillel.hw3;
+package FirstHomeworks.Homework3;
 
 import java.util.Arrays;
 import java.util.Random;

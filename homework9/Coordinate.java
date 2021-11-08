@@ -1,4 +1,4 @@
-package ua.ithillel.current;
+package homework9;
 
 public class Coordinate {
     private final int vertical;

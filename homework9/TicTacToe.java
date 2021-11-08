@@ -1,4 +1,4 @@
-package ua.ithillel.current;
+package homework9;
 
 import java.util.Arrays;
 import java.util.Scanner;

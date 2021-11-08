@@ -1,4 +1,4 @@
-package com.hillel.hw3;
+package FirstHomeworks.Homework3;
 
 //Задана строка. Вывести все перестановки этой строки.
 //        Например для строки "abc":

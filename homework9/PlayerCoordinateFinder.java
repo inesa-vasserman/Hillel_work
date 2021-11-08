@@ -1,8 +1,8 @@
-package ua.ithillel.current;
+package homework9;
 
 import java.util.Scanner;
 
-import static ua.ithillel.current.TicTacToe.fieldSize;
+import static homework9.TicTacToe.fieldSize;
 
 
 public class PlayerCoordinateFinder implements CoordinateFinder {

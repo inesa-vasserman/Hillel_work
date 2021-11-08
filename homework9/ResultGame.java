@@ -1,4 +1,4 @@
-package ua.ithillel.current;
+package homework9;
 
 public class ResultGame extends TicTacToe {
 

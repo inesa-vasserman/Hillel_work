@@ -1,3 +1,4 @@
+package Homework4;
 import java.util.Random;
 
 public class FirstExercise {

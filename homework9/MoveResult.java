@@ -1,4 +1,4 @@
-package ua.ithillel.current;
+package homework9;
 
 public class MoveResult {
     private final char symbol;
