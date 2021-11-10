@@ -9,12 +9,7 @@ public class Phonebook extends Record {
 
     public static void main(String[] args) {
 
-        Record oleg = new Record("oleg", "0552898075");
-        Record sam = new Record("sam", "0552898075");
-        Record viktor = new Record("viktor", "0552898075");
-
     }
-
 
     public static void addRecord(Record object) {
         arrayList.add(object);
@@ -29,14 +24,17 @@ public class Phonebook extends Record {
         return null;
     }
 
-    public static ArrayList findAll(String str) {
-        List<Object> listOfNames = new ArrayList<Object>();
-        for (int i = 0; i < arrayList.size(); i++) {
-            if (((Record) arrayList.get(i)).getName().equals(str)) {
-                listOfNames.add(arrayList.get(i));
+    public static List<Object> findAll(String str) {
+        List<Object> listOfNames = new ArrayList<>();
+        for (Record record : arrayList) {
+            if (((Record) record).getName().equals(str)) {
+                listOfNames.add(record);
             }
         }
-        return null;
+        if (listOfNames.isEmpty()) {
+            return null;
+        }
+        return listOfNames;
     }
 
 }

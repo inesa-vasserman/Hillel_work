@@ -10,16 +10,6 @@ public class Main extends FinderOccurrence {
     }
 
     public static void main(String[] args) {
-        List<String> people = new ArrayList<>();
-        String[] arrayOfStrings = {"mama", "dad", "father", "dad", "dad", "string", "uncle", "vegans", "sorted", "cat", "dog", "apple", "dad"};
-        String str = "string";
-
-        List<String> listOfStrings = Arrays.asList(arrayOfStrings);
-        people.addAll(listOfStrings);
-
-        int[] arr = {1, 1, 2, 1, 4, 5, 1};
-
-        calcOccurrence(people);
 
     }
 
@@ -27,10 +17,10 @@ public class Main extends FinderOccurrence {
 // Список заполнен произвольными словами 10-20 штук, которые могут повторяться в неограниченном количестве.
 // Посчитать сколько раз встречается переданная строка в качестве второго аргумента.
 
-    public static int countOccurrence(List strings, String target) {
+    public static int countOccurrence(List<String> strings, String target) {
         int count = 0;
-        for (int i = 0; i < strings.size(); i++) {
-            if (strings.get(i).equals(target)) {
+        for (String string : strings) {
+            if (string.equals(target)) {
                 count++;
             }
         }
@@ -44,7 +34,7 @@ public class Main extends FinderOccurrence {
 //    Было Array [1, 2, 3]
 //    Стало List [1, 2, 3]
 
-    public static List toList(int[] arr) {
+    public static List<Integer> toList(int[] arr) {
         List<Integer> arrToList = Arrays.stream(arr).boxed().collect(Collectors.toList());
         return arrToList;
     }
@@ -54,9 +44,9 @@ public class Main extends FinderOccurrence {
 
     public static List<Integer> findUnique(List<Integer> list) {
         List<Integer> listUnique = new ArrayList<>();
-        for (int i = 0; i < list.size(); i++) {
-            if (!listUnique.contains(list.get(i))) {
-                listUnique.add(list.get(i));
+        for (Integer integer : list) {
+            if (!listUnique.contains(integer)) {
+                listUnique.add(integer);
             }
         }
         return listUnique;
@@ -70,7 +60,7 @@ public class Main extends FinderOccurrence {
 //    fox: 1
 //    cat: 1
 
-    public static void calcOccurrence(List list) {
+    public static void calcOccurrence(List<String> list) {
         List<String> list1 = new ArrayList<>();
         list1.addAll(list);
         for (int i = 0; i < list1.size(); i += 0) {
@@ -100,7 +90,7 @@ public class Main extends FinderOccurrence {
 //    ]
 //
 
-    public static ArrayList findOccurrence(List list) {
+    public static ArrayList<Object> findOccurrence(List<String> list) {
 
         ArrayList<Object> arrayList1 = new ArrayList<>();
 
