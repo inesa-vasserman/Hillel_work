@@ -35,8 +35,7 @@ public class Main extends FinderOccurrence {
 //    Стало List [1, 2, 3]
 
     public static List<Integer> toList(int[] arr) {
-        List<Integer> arrToList = Arrays.stream(arr).boxed().collect(Collectors.toList());
-        return arrToList;
+        return Arrays.stream(arr).boxed().collect(Collectors.toList());
     }
 //
 //   3. Создать метод findUnique, принимающий на вход числовой список состоящий из произвольных значений,
@@ -61,14 +60,13 @@ public class Main extends FinderOccurrence {
 //    cat: 1
 
     public static void calcOccurrence(List<String> list) {
-        List<String> list1 = new ArrayList<>();
-        list1.addAll(list);
-        for (int i = 0; i < list1.size(); i += 0) {
+        List<String> copyOfList = new ArrayList<>(list);
+        for (int i = 0; i < copyOfList.size(); i += 0) {
             int counter = 0;
-            System.out.print(list1.get(i) + ": ");
-            for (int j = list1.size() - 1; j >= i; j--) {
-                if (list1.get(i).contains(list1.get(j))) {
-                    list1.remove(j);
+            System.out.print(copyOfList.get(i) + ": ");
+            for (int j = copyOfList.size() - 1; j >= i; j--) {
+                if (copyOfList.get(i).contains(copyOfList.get(j))) {
+                    copyOfList.remove(j);
                     counter++;
                 }
             }
@@ -90,15 +88,14 @@ public class Main extends FinderOccurrence {
 //    ]
 //
 
-    public static ArrayList<Object> findOccurrence(List<String> list) {
+    public static ArrayList<FinderOccurrence> findOccurrence(List<String> list) {
 
-        ArrayList<Object> arrayList1 = new ArrayList<>();
+        ArrayList<FinderOccurrence> foundOccurrences = new ArrayList<>();
 
         for (int i = 0; i < list.size(); i++) {
-            FinderOccurrence finderOccurrence = new FinderOccurrence(String.valueOf(list.get(i)), countOccurrence(list, (String) list.get(i)));
-            arrayList1.add(finderOccurrence);
+            foundOccurrences.add(new FinderOccurrence(String.valueOf(list.get(i)), countOccurrence(list, list.get(i))));
         }
 
-        return arrayList1;
+        return foundOccurrences;
     }
 }

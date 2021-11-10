@@ -3,7 +3,7 @@ package Homework11.phonebook;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Phonebook extends Record {
+public class Phonebook {
 
     public static ArrayList<Record> arrayList = new ArrayList<>();
 
@@ -11,23 +11,23 @@ public class Phonebook extends Record {
 
     }
 
-    public static void addRecord(Record object) {
+    public void addRecord(Record object) {
         arrayList.add(object);
     }
 
-    public static String findRecord(String str) {
+    public String findRecord(String str) {
         for (int i = 0; i < arrayList.size(); i++) {
-            if (((Record) arrayList.get(i)).getName().equals(str)) {
+            if (arrayList.get(i).getName().equals(str)) {
                 return arrayList.toString();
             }
         }
         return null;
     }
 
-    public static List<Object> findAll(String str) {
-        List<Object> listOfNames = new ArrayList<>();
+    public List<Record> findAll(String str) {
+        List<Record> listOfNames = new ArrayList<>();
         for (Record record : arrayList) {
-            if (((Record) record).getName().equals(str)) {
+            if (record.getName().equals(str)) {
                 listOfNames.add(record);
             }
         }
