@@ -3,30 +3,39 @@ package Homework11.homework11;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class Main {
+public class Main extends FinderOccurrence {
+
+    public Main(String name, int occurrence) {
+        super(name, occurrence);
+    }
+
     public static void main(String[] args) {
-     ArrayList<String> people = new ArrayList<String>();
-     String[] arrayOfStrings = {"mama", "dad", "father", "dad", "dad", "string", "uncle", "vegans", "sorted", "cat", "dog", "apple", "dad"};
-     String str = "dad";
-     
-     List<String> listOfStrings = Arrays.asList(arrayOfStrings);
-     people.addAll(listOfStrings);
-        findOccurrence(people);
+        List<String> people = new ArrayList<>();
+        String[] arrayOfStrings = {"mama", "dad", "father", "dad", "dad", "string", "uncle", "vegans", "sorted", "cat", "dog", "apple", "dad"};
+        String str = "string";
 
+        List<String> listOfStrings = Arrays.asList(arrayOfStrings);
+        people.addAll(listOfStrings);
 
- }
+        int[] arr = {1, 1, 2, 1, 4, 5, 1};
+
+        calcOccurrence(people);
+
+    }
 
 //1. Создать метод countOccurance, принимающий на вход строковый список в качестве параметра и произвольную строку.
 // Список заполнен произвольными словами 10-20 штук, которые могут повторяться в неограниченном количестве.
 // Посчитать сколько раз встречается переданная строка в качестве второго аргумента.
 
-    public static int countOccurrence(ArrayList arrayList, String str) {
-     int counter = 0;
-     while (arrayList.contains(str)) {
-         arrayList.remove(str);
-         counter += 1;
-     }
-        return counter;
+    public static int countOccurrence(List strings, String target) {
+        int count = 0;
+        for (int i = 0; i < strings.size(); i++) {
+            if (strings.get(i).equals(target)) {
+                count++;
+            }
+        }
+        System.out.println("Count: " + count);
+        return count;
     }
 //
 //  2. Создать метод toList, принимающий на вход целочисленный массив произвольной длины.
@@ -43,11 +52,11 @@ public class Main {
 //   3. Создать метод findUnique, принимающий на вход числовой список состоящий из произвольных значений,
 //   которые могут повторяться в неограниченном количестве. Необходимо вернуть новый числовой список содержащий только уникальные числа.
 
-    public static List<Integer> findUnique(ArrayList arrayList) {
+    public static List<Integer> findUnique(List<Integer> list) {
         List<Integer> listUnique = new ArrayList<>();
-        for (int i = 0; i < arrayList.size(); i++) {
-            if(!listUnique.contains(arrayList.get(i))) {
-                listUnique.add((Integer) arrayList.get(i));
+        for (int i = 0; i < list.size(); i++) {
+            if (!listUnique.contains(list.get(i))) {
+                listUnique.add(list.get(i));
             }
         }
         return listUnique;
@@ -61,10 +70,19 @@ public class Main {
 //    fox: 1
 //    cat: 1
 
-    public static void calcOccurrence(ArrayList arrayList) {
-        for (int i = 0; i < arrayList.size(); i++) {
-            System.out.print(arrayList.get(i) + ": ");
-            System.out.println(countOccurrence(arrayList, (String) arrayList.get(i)));
+    public static void calcOccurrence(List list) {
+        List<String> list1 = new ArrayList<>();
+        list1.addAll(list);
+        for (int i = 0; i < list1.size(); i += 0) {
+            int counter = 0;
+            System.out.print(list1.get(i) + ": ");
+            for (int j = list1.size() - 1; j >= i; j--) {
+                if (list1.get(i).contains(list1.get(j))) {
+                    list1.remove(j);
+                    counter++;
+                }
+            }
+            System.out.println(counter);
         }
         System.out.println();
     }
@@ -82,14 +100,15 @@ public class Main {
 //    ]
 //
 
-    public static void findOccurrence(ArrayList arrayList) {
-        HashMap<String, String> myHashMap = new HashMap<String, String>();
-        Dictionary dictionary = null;
-        for (int i = 0; i < arrayList.size(); i++) {
-            dictionary.put("name:", (String) arrayList.get(i));
-            dictionary.put("occurrence:", String.valueOf(countOccurrence(arrayList, (String) arrayList.get(i))));
-        }
-        System.out.println(dictionary);
+    public static ArrayList findOccurrence(List list) {
 
+        ArrayList<Object> arrayList1 = new ArrayList<>();
+
+        for (int i = 0; i < list.size(); i++) {
+            FinderOccurrence finderOccurrence = new FinderOccurrence(String.valueOf(list.get(i)), countOccurrence(list, (String) list.get(i)));
+            arrayList1.add(finderOccurrence);
+        }
+
+        return arrayList1;
     }
 }
