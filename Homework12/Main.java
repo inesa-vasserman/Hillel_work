@@ -4,20 +4,19 @@ import java.util.*;
 
 public class Main {
 
-
-    public static void main(String[] args) {
+    public void main(String[] args) {
     }
 
 //    1. Создать метод addFirst, принимающий на вход связный список и строку. Добавить в конец списка переданное строковое значение.
 
-    public static LinkedList<String> addFirst(LinkedList<String> list, String str) {
+    public LinkedList<String> addFirst(LinkedList<String> list, String str) {
         list.addLast(str);
         return list;
     }
 //
 //2. Создать метод addLast, принимающий на вход связный список и строку. Добавить в начало списка переданное строковое значение.
 
-    public static LinkedList<String> addLast(LinkedList<String> list, String str) {
+    public LinkedList<String> addLast(LinkedList<String> list, String str) {
         list.addFirst(str);
         return list;
     }
@@ -29,7 +28,7 @@ public class Main {
 //    param2 [5, 7, 8]
 //    result [1, 2, 3, 5, 7, 8]
 
-    public static LinkedList<Integer> join(LinkedList<Integer> listFirst, LinkedList<Integer> listSecond) {
+    public LinkedList<Integer> join(LinkedList<Integer> listFirst, LinkedList<Integer> listSecond) {
 
         LinkedList<Integer> joinedList = new LinkedList<>(listFirst);
         joinedList.addAll(listSecond);
@@ -40,7 +39,7 @@ public class Main {
 //    Метод должен поменять местами имеющиеся внутри списка значения в случайном порядке (тасовка). Каждый потенциальный вызов метода будет возвращать новый результат, где
 //    нет гарантии повторения порядка.
 
-    public static LinkedList<String> shuffle(LinkedList<String> list) {
+    public LinkedList<String> shuffle(LinkedList<String> list) {
         ArrayList<Integer> randomUsedNumbers = new ArrayList<>();
         int size = list.size() - 1;
 
@@ -70,7 +69,7 @@ public class Main {
 //    param2 [3, 2, 5, 7]
 //    result [2, 3]
 
-    public static LinkedList<Integer> intersect(LinkedList<Integer> listFirst, LinkedList<Integer> listSecond) {
+    public LinkedList<Integer> intersect(LinkedList<Integer> listFirst, LinkedList<Integer> listSecond) {
         LinkedList<Integer> result = new LinkedList<>(listFirst);
         result.retainAll(listSecond);
         return result;
