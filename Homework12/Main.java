@@ -1,29 +1,23 @@
 package Homework12;
 
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.Iterator;
-import java.util.LinkedList;
+import java.util.*;
 
 public class Main {
+
 
     public static void main(String[] args) {
         LinkedList<String> linkedList = new LinkedList<>();
         String str = "amazon";
         String [] arr = {"mama", "papa", "shop"};
         linkedList.addAll(Arrays.stream(arr).toList());
-        LinkedList<Integer> list = new LinkedList<>();
-        list.add(1);
-        list.add(2);
-        list.add(3);
-        list.add(4);
-        LinkedList<Integer> list1 = new LinkedList<>();
-        list1.add(5);
-        list1.add(6);
-        list1.add(7);
-        list1.add(8);
+        LinkedList<String> list = new LinkedList<>();
+        list.add("1");
+        list.add("2");
+        list.add("3");
+        list.add("4");
 
-        System.out.println(join(list, list1));
+        shuffle(list);
+        System.out.println(list);
     }
 
 //    1. Создать метод addFirst, принимающий на вход связный список и строку. Добавить в конец списка переданное строковое значение.
@@ -37,7 +31,7 @@ public class Main {
 
     public static LinkedList<String> addLast(LinkedList<String> list, String str) {
         list.addFirst(str);
-        return null;
+        return list;
     }
 //
 //3. Создать метод join, принимающий на вход два целочисловых связных списка, заполненные произвольными значениями (5-10 шт. в каждом).
@@ -58,9 +52,35 @@ public class Main {
 //    Метод должен поменять местами имеющиеся внутри списка значения в случайном порядке (тасовка). Каждый потенциальный вызов метода будет возвращать новый результат, где
 //    нет гарантии повторения порядка.
 
-    public static LinkedList<String> shuffle(LinkedList list) {
-        LinkedList<String> linkedList = new LinkedList<>();
-    return linkedList;
+    public static void shuffle(LinkedList<String> list) {
+        ListIterator<String> iterator = list.listIterator();
+        ListIterator<String> iterator2 = list.listIterator();
+
+
+        while (iterator.hasNext()) {
+            String elementsFromStart = "";
+            String elementsFromEnd = "";
+            int i;
+            int j;
+            int randomizeStart = (int) (Math.random() * (list.size()));
+            System.out.println(randomizeStart);
+            int randomizeEnd = (int) (Math.random() * (list.size()));
+            System.out.println(randomizeEnd);
+            i = randomizeStart;
+            j = randomizeEnd;
+            while(i > 0) {
+                elementsFromStart = iterator.next();
+                i--;
+            }
+            while(j > 0) {
+                    elementsFromEnd = iterator2.next();
+                    j--;
+            }
+            list.set(randomizeStart, elementsFromEnd);
+            list.set(randomizeEnd, elementsFromStart);
+
+        }
+//    return list;
     }
 //
 //            5. Создать метод intersect, принимающий на вход два целочисловых связных списка, заполненные произвольными значениями (5-10 шт. в каждом).
@@ -70,8 +90,10 @@ public class Main {
 //    param2 [3, 2, 5, 7]
 //    result [2, 3]
 
-    public static void intersect(LinkedList<Integer> listFirst, LinkedList<Integer> listSecond) {
-
+    public static LinkedList<Integer> intersect(LinkedList<Integer> listFirst, LinkedList<Integer> listSecond) {
+        LinkedList<Integer> result = new LinkedList<>(listFirst);
+        result.retainAll(listSecond);
+        return result;
     }
 
 }
