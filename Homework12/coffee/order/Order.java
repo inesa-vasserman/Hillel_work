@@ -2,6 +2,8 @@ package Homework12.coffee.order;
 
 public class Order {
 
+    //        2. Создать класс Order. Класс является цифровым представлением заказа. Данный класс содержит номер заказа и имя человека его заказавшего.
+
 
     public int number;
     private String name;
