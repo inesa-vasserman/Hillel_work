@@ -45,17 +45,16 @@ public class Main {
         int size = list.size() - 1;
 
         while (size >= 0) {
-            String firstElement;
-            String secondElement;
+
 
             int firstRandomIndex = (int) (Math.random() * (list.size()));
             int SecondRandomIndex = (int) (Math.random() * (list.size()));
 
             if (!randomUsedNumbers.contains(firstRandomIndex) && !randomUsedNumbers.contains(SecondRandomIndex) && firstRandomIndex != SecondRandomIndex) {
-                firstElement = list.get(firstRandomIndex);
-                secondElement = list.get(SecondRandomIndex);
-                list.set(firstRandomIndex, secondElement);
-                list.set(SecondRandomIndex, firstElement);
+
+                list.set(firstRandomIndex, list.get(SecondRandomIndex));
+                list.set(SecondRandomIndex, list.get(firstRandomIndex));
+
                 randomUsedNumbers.add(firstRandomIndex);
                 randomUsedNumbers.add(SecondRandomIndex);
                 size -= 2;

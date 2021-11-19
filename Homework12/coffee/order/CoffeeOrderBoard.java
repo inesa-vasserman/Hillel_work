@@ -6,7 +6,7 @@ public class CoffeeOrderBoard {
 
     private LinkedList<Order> orders = new LinkedList<>();
 
-    public static void main(String[] args) {
+    public void main(String[] args) {
     }
 
     public void add(String name) {
