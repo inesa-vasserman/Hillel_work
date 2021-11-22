@@ -65,9 +65,9 @@ public class FileNavigator {
         for (int i = fileWithAllowableSize.size() - 1; i >= 1; i--) {
             for (int j = 0; j < i; j++) {
                 if (fileWithAllowableSize.get(j).getSize() > fileWithAllowableSize.get(j + 1).getSize()) {
-                    FileData dummy = fileWithAllowableSize.get(j);
+                    FileData targetValue = fileWithAllowableSize.get(j);
                     fileWithAllowableSize.set(j, fileWithAllowableSize.get(j + 1));
-                    fileWithAllowableSize.set(j + 1, dummy);
+                    fileWithAllowableSize.set(j + 1, targetValue);
                 }
             }
 
