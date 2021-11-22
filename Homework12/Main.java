@@ -40,25 +40,28 @@ public class Main {
 //    нет гарантии повторения порядка.
 
     public LinkedList<String> shuffle(LinkedList<String> source) {
-        ArrayList<Integer> randomUsedNumbers = new ArrayList<>();
-        int size = source.size() - 1;
 
-        while (size >= 0) {
+        Collections.shuffle(source);
 
-
-            int firstRandomIndex = (int) (Math.random() * (source.size()));
-            int SecondRandomIndex = (int) (Math.random() * (source.size()));
-
-            if (!randomUsedNumbers.contains(firstRandomIndex) && !randomUsedNumbers.contains(SecondRandomIndex) && firstRandomIndex != SecondRandomIndex) {
-
-                source.set(firstRandomIndex, source.get(SecondRandomIndex));
-                source.set(SecondRandomIndex, source.get(firstRandomIndex));
-
-                randomUsedNumbers.add(firstRandomIndex);
-                randomUsedNumbers.add(SecondRandomIndex);
-                size -= 2;
-            }
-        }
+//        ArrayList<Integer> randomUsedNumbers = new ArrayList<>();
+//        int size = source.size() - 1;
+//
+//        while (size >= 0) {
+//
+//
+//            int firstRandomIndex = (int) (Math.random() * (source.size()));
+//            int SecondRandomIndex = (int) (Math.random() * (source.size()));
+//
+//            if (!randomUsedNumbers.contains(firstRandomIndex) && !randomUsedNumbers.contains(SecondRandomIndex) && firstRandomIndex != SecondRandomIndex) {
+//
+//                source.set(firstRandomIndex, source.get(SecondRandomIndex));
+//                source.set(SecondRandomIndex, source.get(firstRandomIndex));
+//
+//                randomUsedNumbers.add(firstRandomIndex);
+//                randomUsedNumbers.add(SecondRandomIndex);
+//                size -= 2;
+//            }
+//        }
         return source;
     }
 //
