@@ -31,7 +31,7 @@ public class FileLogger {
     }
 
     public void debug(String message) throws IOException {
-        if (fileSize.length() < config.getMaxSize()) {
+        if (fileSize.length() > config.getMaxSize()) {
             throw new FileMaxSizeReachedException("The size of the file is lower then your message");
         }
         bufferedWriter.write(String.format(
@@ -51,7 +51,7 @@ public class FileLogger {
         }
 
 
-        if (fileSize.length() < config.getMaxSize()) {
+        if (fileSize.length() > config.getMaxSize()) {
             throw new FileMaxSizeReachedException("The size of the file is lower then your message");
         }
         bufferedWriter.write(String.format(
