@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 public class FileLogger {
     private FileLoggerConfiguration config;
     private BufferedWriter bufferedWriter;
+    private File fileSize;
+
 
     public FileLogger(FileLoggerConfiguration config) {
         this.config = config;
@@ -22,7 +24,6 @@ public class FileLogger {
         }
     }
 
-    File fileSize;
 
     {
         assert false;
