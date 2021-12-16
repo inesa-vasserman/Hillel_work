@@ -14,6 +14,7 @@ public class FileLogger {
 
     public FileLogger(FileLoggerConfiguration config) {
         this.config = config;
+        fileSize = new File(config.getOutputFile());
     }
 
     public void initBufferWriter() {
@@ -24,11 +25,6 @@ public class FileLogger {
         }
     }
 
-
-    {
-        assert false;
-        fileSize = new File(config.getOutputFile());
-    }
 
     public void debug(String message) throws IOException {
         if (fileSize.length() > config.getMaxSize()) {

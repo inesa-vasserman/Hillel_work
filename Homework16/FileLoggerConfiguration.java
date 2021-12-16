@@ -26,8 +26,7 @@ public class FileLoggerConfiguration {
     }
 
     private void setMaxSize(String maxSize) {
-        this.maxSize = Integer.getInteger(maxSize);
-    }
+        this.maxSize = Integer.parseInt(maxSize);}
 
     public void initFileLoggerConfiguration(HashMap<String, String> configData) {
         setOutputFile(configData.get("FILE"));
