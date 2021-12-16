@@ -1,38 +1,18 @@
 package Homework16;
 
-public class Main {
+import java.io.File;
+import java.io.IOException;
 
-//    1. Создать класс FileLogger. Класс будет осуществлять логирование (протоколирование)
-//    информации в указанный файл на основании конфигурационного объекта.
-//
-//            2. Создать перечисление LoggingLevel. Состоит из значений: INFO, DEBUG.
-//
-//    Таблица видимости:
-//            | LEVEL | INFO | DEBUG |
-//            | INFO  |  X   |       |
-//            | DEBUG |   X  |   X   |
-//
-//    То есть, если активирован уровень DEBUG, то в него также включается INFO, но не наоборот.
-//
-//            3. Создать класс FileLoggerConfiguration. Класс представляет конфигурацию для логирования. Состоит из свойств: файл куда будет записываться информация,
-//            текущий уровень логирования, максимальный размер файла (в байтах), формат для записи в файл.
-//
-//            3. В классе FileLogger. Создать методы debug и info, которые в качестве параметра принимают строку-сообщение.
-//            Метод должны выполнять запись в указанный в конфигурации файл в установленном формате для записи из конфигурации.
-//    Формат записи: [ТЕКУЩЕЕ_ВРЕМЯ][DEBUG] Сообщение: [СТРОКА-СООБЩЕНИЕ]
-//
-//            4. При выполнении методов debug и info учесть максимально допустимый размер файла куда будут записываться логи.
-//    При достижении максимального размера файла или его превышении, выбросить исключение FileMaxSizeReachedException с
-//    сообщением информации максимального и текущего размера файла, пути к файлу.
-//
-//            5. * Создать класс FileLoggerConfigurationLoader. Объект данного типа при помощи метода load,
-//            будет загружать конфигурацию для логирования из указанного файла. Метод возвращает объект типа FileLoggerConfiguration.
-//
-//    Содержание файла:
-//    FILE: ТУТ_ПУТЬ_К_ФАЙЛУ
-//    LEVEL: ТУТ_УРОВЕНЬ
-//    MAX-SIZE: ТУТ_РАЗМЕР
-//    FORMAT: ТУТ_ФОРМАТ
+public class Main {
+    public static void main(String[] args) throws IOException {
+        FileLoggerConfigurationLoader fileLoggerConfigurationLoader = new FileLoggerConfigurationLoader();
+        FileLoggerConfiguration fileLoggerConfiguration = fileLoggerConfigurationLoader.load("logger.txt");
+        FileLogger fileLogger = new FileLogger(fileLoggerConfiguration);
+        fileLogger.initBufferWriter();
+        fileLogger.info("");
+        fileLogger.debug("");
+    }
+
 //
 //6. ** При достижении максимального размера файла или его превышении, создавать новый (дополнительный)
 // файл для хранения логов. Имя каждого нового файла должно содержать дату его создания.

@@ -1,4 +1,6 @@
 package Homework16;
 
-public interface LoggingLevel {
+public enum LoggingLevel {
+    INFO,
+    DEBUG,
 }

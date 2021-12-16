@@ -1,47 +1,54 @@
 package Homework16;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.util.HashMap;
 
 public class FileLoggerConfiguration {
-    public static FileWriter file;
+    public String outputFile;
+    public LoggingLevel loggingLevel;
+    public int maxSize; // number of bytes
+    public String stringFormat = "[%s] [%s] MESSAGE : [%s]";
 
-    static {
-        try {
-            file = new FileWriter("logger.txt");
-        } catch (IOException e) {
-            e.printStackTrace();
+    private void setOutputFile(String outputFile) {
+        this.outputFile = outputFile;
+    }
+
+    private void setStringFormat(String stringFormat) {
+        this.stringFormat = stringFormat;
+    }
+
+    private void setLoggingLevel(String loggingLevel) {
+        switch (loggingLevel) {
+            case "INFO":
+                this.loggingLevel = LoggingLevel.INFO;
+            case "DEBUG":
+                this.loggingLevel = LoggingLevel.DEBUG;
         }
     }
 
-    LoggingLevel loggingLevel;
-    byte maxSize;
-
-    public FileLoggerConfiguration() throws IOException {
+    private void setMaxSize(String maxSize) {
+        this.maxSize = Integer.getInteger(maxSize);
     }
 
-    public static FileWriter getFile() {
-        return file;
+    public void initFileLoggerConfiguration(HashMap<String, String> configData) {
+        setOutputFile(configData.get("FILE"));
+        setStringFormat(configData.get("FORMAT"));
+        setLoggingLevel(configData.get("LEVEL"));
+        setMaxSize(configData.get("MAX-SIZE"));
+    }
+
+    public String getStringFormat() {
+        return stringFormat;
+    }
+
+    public String getOutputFile() {
+        return outputFile;
     }
 
     public LoggingLevel getLoggingLevel() {
         return loggingLevel;
     }
 
-    public void setLoggingLevel(LoggingLevel loggingLevel) {
-        this.loggingLevel = loggingLevel;
-    }
-
-    public byte getMaxSize() {
+    public int getMaxSize() {
         return maxSize;
     }
-
-    public void setMaxSize(byte maxSize) {
-        this.maxSize = maxSize;
-    }
-//
-//            3. Создать класс FileLoggerConfiguration. Класс представляет конфигурацию для логирования. Состоит из свойств: файл куда будет записываться информация,
-//            текущий уровень логирования, максимальный размер файла (в байтах), формат для записи в файл.
-
 }
