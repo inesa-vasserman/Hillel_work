@@ -1,14 +1,20 @@
 package FirstHomeworks.Homework3;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Random;
+import java.util.Scanner;
 
 public class Main {
     public static int[] randomArr = new int[10];
     public static int average = 0;
     public static String newString = "";
     public static double result;
+    public static int sizeHorizontal = 0;
+    public static int sizeVertical = 0;
 
     public static void main(String[] args) {
+        System.out.println(checkArray("logger.txt", "test"));
 
 
         // Вывести ряд чисел от 1 до 100 через пробел, с изменениями
@@ -19,17 +25,17 @@ public class Main {
         //- если число кратно и 3 и 5 то вместо него вывести HelloWorld
 
 
-        for (int i = 1; i <= 100; i++) {
-            if (i % 3 == 0 && i % 5 != 0) {
-                System.out.print("Hello ");
-            } else if (i % 3 != 0 && i % 5 == 0) {
-                System.out.print("World ");
-            } else if (i % 3 == 0 && i % 5 == 0) {
-                System.out.print("HelloWorld ");
-            } else {
-                System.out.print(i + " ");
-            }
-        }
+//        for (int i = 1; i <= 100; i++) {
+//            if (i % 3 == 0 && i % 5 != 0) {
+//                System.out.print("Hello ");
+//            } else if (i % 3 != 0 && i % 5 == 0) {
+//                System.out.print("World ");
+//            } else if (i % 3 == 0 && i % 5 == 0) {
+//                System.out.print("HelloWorld ");
+//            } else {
+//                System.out.print(i + " ");
+//            }
+//        }
 
 
     }
@@ -86,8 +92,8 @@ public class Main {
     // Массив загрузить из текстового файла
 
 
-    public static boolean checkArray(char[][] args, String strTest) {
-
+    public static boolean checkArray(String filename, String strTest) {
+        char[][] args = load(filename);
         char[] stringToArray = strTest.toCharArray();
         int countLine = args.length;
         int countCol = args[0].length;
@@ -121,4 +127,45 @@ public class Main {
         return false;
     }
 
+    public static char[][] load(String filename) {
+        countSize(filename);
+        char[][] args = new char[sizeVertical + 1][sizeHorizontal];
+        try {
+            File myObj = new File(filename);
+            Scanner myReader = new Scanner(myObj);
+            for (int i = 0; i < args.length; i++) {
+                for (int j = 0; j < args[i].length; j++) {
+                    String data = myReader.next();
+                    args[i][j] = data.charAt(0);
+                }
+            }
+
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+        return args;
+    }
+
+    public static void countSize(String filename) {
+        String counterLine = "";
+        try {
+            File myObj = new File(filename);
+            Scanner myReader = new Scanner(myObj);
+            while (myReader.hasNextLine()) {
+                sizeVertical++;
+
+                if (sizeVertical == 1) {
+                    counterLine = myReader.nextLine().replace(" ", "");
+                }
+                myReader.nextLine();
+            }
+            sizeHorizontal = counterLine.length();
+            myReader.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
+    }
 }
