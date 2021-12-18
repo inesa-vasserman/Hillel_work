@@ -4,7 +4,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.sql.Time;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 public class FileLogger {
     private FileLoggerConfiguration config;
@@ -28,7 +30,9 @@ public class FileLogger {
 
     public void debug(String message) throws IOException {
         if (fileSize.length() > config.getMaxSize()) {
-            throw new FileMaxSizeReachedException("The size of the file is lower then your message");
+            config.setOutputFile(String.format("%s%s.txt", config.getOutputFile().substring(0, config.getOutputFile().length() - 4), new Date()));
+            initBufferWriter();
+//            throw new FileMaxSizeReachedException("The size of the file is lower then your message");
         }
         bufferedWriter.write(String.format(
                 config.getStringFormat(),
@@ -48,7 +52,9 @@ public class FileLogger {
 
 
         if (fileSize.length() > config.getMaxSize()) {
-            throw new FileMaxSizeReachedException("The size of the file is lower then your message");
+            config.setOutputFile(String.format("%s%s.txt", config.getOutputFile().substring(0, config.getOutputFile().length() - 4), new Date()));
+            initBufferWriter();
+            //            throw new FileMaxSizeReachedException("The size of the file is lower then your message");
         }
         bufferedWriter.write(String.format(
                 config.getStringFormat(),

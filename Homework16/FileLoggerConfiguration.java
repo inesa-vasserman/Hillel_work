@@ -8,7 +8,7 @@ public class FileLoggerConfiguration {
     public int maxSize; // number of bytes
     public String stringFormat = "[%s] [%s] MESSAGE : [%s]";
 
-    private void setOutputFile(String outputFile) {
+    public void setOutputFile(String outputFile) {
         this.outputFile = outputFile;
     }
 

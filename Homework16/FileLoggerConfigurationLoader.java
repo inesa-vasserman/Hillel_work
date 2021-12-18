@@ -23,17 +23,5 @@ public class FileLoggerConfigurationLoader {
             e.printStackTrace();
         }
         return fileLoggerConfiguration;
-//        while (true) {
-//            String checker = fileReader.readLine();
-//            if (checker != null) {
-//                StringBuffer parameters = new StringBuffer(checker);
-//                parameters.delete(0, (parameters.indexOf(" ") + 1));
-//                FileLoggerConfiguration.setOutputFile();
-//                FileLoggerConfiguration.setLoggingLevel(();
-//                FileLoggerConfiguration.setMaxSize();
-//                FileLoggerConfiguration.setStringFormat();
-//                System.out.println(parameters);
-//            }
-//        }
     }
 }

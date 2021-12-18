@@ -9,8 +9,8 @@ public class Main {
         FileLoggerConfiguration fileLoggerConfiguration = fileLoggerConfigurationLoader.load("logger.txt");
         FileLogger fileLogger = new FileLogger(fileLoggerConfiguration);
         fileLogger.initBufferWriter();
-        fileLogger.info("");
         fileLogger.debug("");
+        fileLogger.info("");
     }
 
 //
