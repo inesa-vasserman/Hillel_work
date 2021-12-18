@@ -20,8 +20,10 @@ public class FileLoggerConfiguration {
         switch (loggingLevel) {
             case "INFO":
                 this.loggingLevel = LoggingLevel.INFO;
+                break;
             case "DEBUG":
                 this.loggingLevel = LoggingLevel.DEBUG;
+                break;
         }
     }
 
