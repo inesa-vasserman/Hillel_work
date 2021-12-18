@@ -18,17 +18,14 @@ public class FileLoggerConfiguration {
 
     private void setLoggingLevel(String loggingLevel) {
         switch (loggingLevel) {
-            case "INFO":
-                this.loggingLevel = LoggingLevel.INFO;
-                break;
-            case "DEBUG":
-                this.loggingLevel = LoggingLevel.DEBUG;
-                break;
+            case "INFO" -> this.loggingLevel = LoggingLevel.INFO;
+            case "DEBUG" -> this.loggingLevel = LoggingLevel.DEBUG;
         }
     }
 
     private void setMaxSize(String maxSize) {
-        this.maxSize = Integer.parseInt(maxSize);}
+        this.maxSize = Integer.parseInt(maxSize);
+    }
 
     public void initFileLoggerConfiguration(HashMap<String, String> configData) {
         setOutputFile(configData.get("FILE"));
